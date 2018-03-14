@@ -23,6 +23,13 @@ def buy_drink(pub, drink_to_buy)
   end
 end
 
+def buy_food(pub, food_to_buy)
+  @wallet -= food_to_buy.price
+  pub.till += food_to_buy.price
+  pub.food.delete_if {|food| food == food_to_buy}
+  @drunkenness -= food_to_buy.rejuvenation
+end
+
 
 
 

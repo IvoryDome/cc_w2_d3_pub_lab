@@ -1,6 +1,7 @@
 require('minitest/autorun')
 require_relative('../pub.rb')
 require_relative('../drink.rb')
+require_relative('../food.rb')
 
 class TestPub < MiniTest::Test
 
@@ -11,7 +12,13 @@ class TestPub < MiniTest::Test
       Drink.new("Lager", 3, 2),
       Drink.new("Cocktail", 6, 5)
     ]
-    @pub = Pub.new("The Kebab and Calculator", 0, pub_drinks)
+    pub_food = [
+      Food.new("Steamed Hams", 4, 3),
+      Food.new("Steamed Clams", 5, 5),
+      Food.new("Grilled Burgers", 3, 2),
+      Food.new("Gruel", 1, 1)
+    ]
+    @pub = Pub.new("The Kebab and Calculator", 0, pub_drinks, pub_food)
   end
 
 
@@ -19,6 +26,7 @@ class TestPub < MiniTest::Test
     assert_equal("The Kebab and Calculator", @pub.name)
     assert_equal(0, @pub.till)
     assert_equal(4, @pub.drinks.count)
+    assert_equal(4, @pub.food.count)
   end
 
 
